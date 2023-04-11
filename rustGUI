@@ -1,0 +1,25 @@
+use gtk::prelude::*;
+use gtk::{Application, ApplicationWindow, Button};
+
+fn main() {
+    // Initialize the GTK application
+    let app = Application::new(Some("com.example.myapp"), Default::default()).expect("Initialization failed...");
+
+    // Create the window
+    let window = ApplicationWindow::new(&app);
+    window.set_title("My Rust App");
+    window.set_default_size(350, 70);
+
+    // Create the button
+    let button = Button::new_with_label("Click me!");
+    button.connect_clicked(|_| {
+        window.set_title("Button clicked!");
+    });
+
+    // Add the button to the window
+    window.add(&button);
+
+    // Show the window and start the GTK main loop
+    window.show_all();
+    app.run(&[]);
+}
