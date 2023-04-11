@@ -1,0 +1,40 @@
+use std::io;
+
+fn main() {
+    println!("Welcome to Rust Calculator!");
+    println!("Please enter your first number:");
+    
+    let mut num1 = String::new();
+    io::stdin().read_line(&mut num1)
+        .expect("Failed to read line");
+    let num1: f64 = num1.trim().parse()
+        .expect("Please enter a number");
+    
+    println!("Please enter your second number:");
+    
+    let mut num2 = String::new();
+    io::stdin().read_line(&mut num2)
+        .expect("Failed to read line");
+    let num2: f64 = num2.trim().parse()
+        .expect("Please enter a number");
+    
+    println!("Please enter the operation you would like to perform:");
+    println!("1. Addition");
+    println!("2. Subtraction");
+    println!("3. Multiplication");
+    println!("4. Division");
+    
+    let mut operation = String::new();
+    io::stdin().read_line(&mut operation)
+        .expect("Failed to read line");
+    let operation: i32 = operation.trim().parse()
+        .expect("Please enter a number");
+    
+    match operation {
+        1 => println!("{} + {} = {}", num1, num2, num1 + num2),
+        2 => println!("{} - {} = {}", num1, num2, num1 - num2),
+        3 => println!("{} * {} = {}", num1, num2, num1 * num2),
+        4 => println!("{} / {} = {}", num1, num2, num1 / num2),
+        _ => println!("Invalid operation selected"),
+    }
+}
